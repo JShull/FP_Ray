@@ -3,7 +3,6 @@ using UnityEngine;
 using Unity.Mathematics;
 namespace FuzzPhyte.Ray
 {
-    [Serializable]
     public interface IFPRaySetup 
     {
         SO_FPRaycaster FPRayInformation { get; set; }
