@@ -7,29 +7,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-11-28
+
+### 0.2.0 Added
+
+- [@JShull](https://github.com/jshull).
+  - FP_RayDebug.cs
+    - Added in a new Mono class for visualizing the FP_RayCaster (eventually get this to be an editor script)
+    - Only requirement is that this class is attached to a mono class and you need to drag the reference in via the editor
+  - 2DReadme.md & 2DReadme.pdf
+    - Readme file to walk through how to use the raycaster in a 2D system
+    - Goes with the Raycast2DURP example scene and is packaged with the URP Samples
+
+### 0.2.0 Changed
+
+- FP_RayMono.cs
+  - Removed the visual debugging information and have added this to a separate class
+  - Due to Unity being weird with interfaces and until I get more code written to support In Editor Interface references I am doing a component work around
+- Rayast2DURP.unity
+  - Scene file has been updated to include the new debug mono class
+- Raycast3DURP.unity
+  - Scene file has been updated to include the new debug mono class
+
+### 0.2.0 Fixed
+
+- None
+
+### 0.2.0 Removed
+
+- None
+
 ## [0.1.0] - 2022-11-06
 
-### Added
+### 0.1.0 Added
 
 - [@JShull](https://github.com/jshull).
   - Moved all test files to a Unity Package Distribution
   - Setup the ChangeLog.md
   - Setup the Package Layout according to [Unity cus-Layout](https://docs.unity3d.com/Manual/cus-layout.html)
-  - Humble Design has been setup with the FP_Raycaster.cs script
-    - Imported Samples provide the remaining Humble setup with the different derived ScriptableObject by raycasts
-  - See Samples in the Unity Package Manager to import an example for 2D and 3D
-  - FP_RayMono is a good example mono derived class of how to use this tool.
+  - Humble Design has been setup with the PlayerController.cs script
+    - Imported Samples provide the remaining Humble setup with the FP_Controller.cs script
+  - See Samples in the Unity Package Manager to import an example
+  - FP_Controller uses both old and new input - dependency on new input but you can swap the project to only use the old one and it will work
   - Scriptable Object setup to work with all other FuzzPhyte packages.
   - Added LICENSE.MD under a dual license for education and for business use cases
 
-### Changed
+### 0.1.0 Changed
 
 - None... yet
 
-### Fixed
+### 0.1.0 Fixed
 
 - Setup the contents to align with Unity naming conventions
 
-### Removed
+### 0.1.0 Removed
 
 - None... yet

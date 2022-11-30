@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 288465505}
   - component: {fileID: 288465507}
   - component: {fileID: 288465508}
+  - component: {fileID: 288465509}
   m_Layer: 0
   m_Name: Example_Raycast3D
   m_TagString: Untagged
@@ -170,10 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2971407dcfb4764b40cb5a3aa7e597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RaycastInformation: 
-  RayEnterColor: {r: 1, g: 0, b: 0.6578746, a: 1}
-  RayStayColor: {r: 1, g: 0.11792451, b: 0.11792451, a: 1}
-  RayExitColor: {r: 0.47067118, g: 0.027450979, b: 1, a: 1}
+  RaycastInformation: Raycast3D Example
   RayData: {fileID: 11400000, guid: 86a1c8e9935ff7749b1a3fe521766cac, type: 2}
   RaycastOrigin: {fileID: 829002108}
   RaycastEndDir: {fileID: 1558180997}
@@ -191,10 +189,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraSensitivity: 1
   PlayerRotationSensitivity: 1
-  LookXLimit: 45
+  LookLimit: 45
   Inverse: 1
   PlayerRoot: {fileID: 288465505}
-  CameraRoot: {fileID: 1689854899}
+  Camera3DPivot: {fileID: 0}
+  TransformTwoDPivot: {fileID: 0}
+  ThreeDCamera: 1
+--- !u!114 &288465509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288465502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdc85dff0ae9ac4194a218939d290e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RayData: {fileID: 288465507}
+  RayEnterColor: {r: 0.6528621, g: 1, b: 0, a: 1}
+  RayStayColor: {r: 1, g: 0.86689603, b: 0, a: 1}
+  RayExitColor: {r: 0.56884766, g: 0, b: 1, a: 1}
 --- !u!1 &428885616
 GameObject:
   m_ObjectHideFlags: 0

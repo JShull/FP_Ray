@@ -465,8 +465,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951373731}
-  - component: {fileID: 951373727}
   - component: {fileID: 951373732}
+  - component: {fileID: 951373727}
+  - component: {fileID: 951373733}
   m_Layer: 0
   m_Name: FakeControl2D
   m_TagString: Untagged
@@ -487,10 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RaycastInformation: RightRayCast
-  RayEnterColor: {r: 1, g: 0, b: 0.6578746, a: 1}
-  RayStayColor: {r: 1, g: 0.11792451, b: 0.11792451, a: 1}
-  RayExitColor: {r: 0.47067118, g: 0.027450979, b: 1, a: 1}
-  RayData: {fileID: 11400000, guid: c98f389af4ac5f247a5f5b77e2939b46, type: 2}
+  RayData: {fileID: 11400000, guid: a3d996f6ecd95af488decb25ab98b585, type: 2}
   RaycastOrigin: {fileID: 652329586}
   RaycastEndDir: {fileID: 119450063}
 --- !u!4 &951373731
@@ -530,6 +528,22 @@ MonoBehaviour:
   Camera3DPivot: {fileID: 0}
   TransformTwoDPivot: {fileID: 847055560}
   ThreeDCamera: 0
+--- !u!114 &951373733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951373726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdc85dff0ae9ac4194a218939d290e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RayData: {fileID: 951373727}
+  RayEnterColor: {r: 0.20488167, g: 1, b: 0, a: 1}
+  RayStayColor: {r: 1, g: 0.86689603, b: 0, a: 1}
+  RayExitColor: {r: 0.56884766, g: 0, b: 1, a: 1}
 --- !u!1 &1199935984
 GameObject:
   m_ObjectHideFlags: 0

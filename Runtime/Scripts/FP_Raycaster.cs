@@ -20,6 +20,7 @@ namespace FuzzPhyte.Ray
         Spline = 5,
     }
     #endregion
+    
     public class FP_Raycaster: IFPRaycaster
     {
         //delegate setup with instance of delegate
@@ -385,6 +386,7 @@ namespace FuzzPhyte.Ray
             return new FP_RaycastHit(hit, RaycastType.Circle);
         }
         #endregion
+ 
     }
 }
 
