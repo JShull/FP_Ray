@@ -1,6 +1,6 @@
 {
     "name": "com.fuzzphyte.ray",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "displayName": "FP Ray",
     "description": "FP Raycaster is a set of scriptable objects that help define and give the user a lot of control over building different Unity Raycasts. Think of this as a Unity Engine wrapper for raycasting. Currently supports 2D and 3D raycasts, Boxcasts, cubecasts, circlecasting, and sphere casting.",
     "unity": "2022.1",
