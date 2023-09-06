@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2023-09-06
+
+### 0.2.1 Fixed
+
+-[@JShull](https://github.com/jshull)
+-FP_Raycaster.cs hot fix
+  - Some scenarios would result in our RayOrigin transform being removed/destroyed prior to the raycaster being deactivated and in those cases the raycaster wasn't catching that issue
+  - Now running two separate invoked events, one containing the origin information the other not.
+
 ## [0.2.0] - 2022-11-28
 
 ### 0.2.0 Added
