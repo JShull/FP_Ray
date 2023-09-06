@@ -92,14 +92,28 @@ namespace FuzzPhyte.Ray
             RaydataHit -= RaycastSphere;
             RaydataHit -= RaycastCircle;
             
-            FP_RayArgument arg = new FP_RayArgument()
+            if (_raySetup.RayOrigin != null)
             {
-                //HitObject = hit.transform,
-                //RayType = _raySetup.FPRayInformation.RayType,
-                WorldEndPoint = _raySetup.RayDirection * _raySetup.FPRayInformation.RaycastLength,
-                WorldOrigin = _raySetup.RayOrigin.position
-            };
-            OnFPRayDeactivate?.Invoke(this, arg);
+                FP_RayArgument arg = new FP_RayArgument()
+                {
+                    //HitObject = hit.transform,
+                    //RayType = _raySetup.FPRayInformation.RayType,
+                    WorldEndPoint = _raySetup.RayDirection * _raySetup.FPRayInformation.RaycastLength,
+                    WorldOrigin = _raySetup.RayOrigin.position
+                };
+                OnFPRayDeactivate?.Invoke(this, arg);
+            }
+            else
+            {
+                FP_RayArgument arg = new FP_RayArgument()
+                {
+                    //HitObject = hit.transform,
+                    //RayType = _raySetup.FPRayInformation.RayType,
+                    WorldEndPoint = _raySetup.RayDirection * _raySetup.FPRayInformation.RaycastLength,
+                    //WorldOrigin = _raySetup.RayOrigin.position
+                };
+                OnFPRayDeactivate?.Invoke(this, arg);
+            }
             _rayActive = false;
         }
         /// <summary>
