@@ -1,10 +1,10 @@
 {
     "name": "com.fuzzphyte.ray",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "displayName": "FP Ray",
     "description": "FP Raycaster is a set of scriptable objects that help define and give the user a lot of control over building different Unity Raycasts. Think of this as a Unity Engine wrapper for raycasting. Currently supports 2D and 3D raycasts, Boxcasts, cubecasts, circlecasting, and sphere casting.",
-    "unity": "2022.1",
-    "unityRelease": "21f1",
+    "unity": "2022.3",
+    "unityRelease": "13f1",
     "documentationUrl": "https://github.com/jshull/FP_Ray/README.md",
     "changelogUrl": "https://github.com/jshull/FP_Ray/CHANGELOG.md",
     "licensesUrl": "https://github.com/jshull/FP_Ray/LICENSE.md",
@@ -13,15 +13,15 @@
       "url": "https://github.com/jshull/FP_Ray.git"
     },
     "dependencies": {
-      "com.unity.test-framework": "1.1.31",
-      "com.unity.mathematics": "1.2.1"
+        "com.unity.mathematics": "1.2.1",
+        "com.fuzzphyte.utility": "https://github.com/jshull/FP_Utility.git"
     },
     "samples": [
-      {
-        "displayName": "Scriptable Object Samples",
-        "description": "Includes some examples of the different scriptable object based raycasts",
-        "path": "Samples~/SamplesURP"
-      }
+        {
+            "displayName": "Scriptable Object Samples",
+            "description": "Includes some examples of the different scriptable object based raycasts",
+            "path": "Samples~/SamplesURP"
+        }
     ],
     "keywords": [
       "ScriptableObject",

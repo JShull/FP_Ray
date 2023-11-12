@@ -20,23 +20,26 @@ namespace FuzzPhyte.Ray
         Spline = 5,
     }
     #endregion
+    /// <summary>
+    /// The core Raycaster humble C# script
+    /// </summary>
     
     public class FP_Raycaster: IFPRaycaster
     {
         //delegate setup with instance of delegate
-        private delegate FP_RaycastHit RayDataReturn(ref bool hit);
-        private RayDataReturn RaydataHit;
+        protected delegate FP_RaycastHit RayDataReturn(ref bool hit);
+        protected RayDataReturn RaydataHit;
         //Interface instance that is passed to us from our Constructor
-        private IFPRaySetup _raySetup;
+        protected IFPRaySetup _raySetup;
         //cached variable to keep track of different outcomes of instantly going out/into others by tracking first hit and storing that
-        private bool _rayFirstHit;
+        protected bool _rayFirstHit;
         //cached variable to keep track of if we are active or not
-        private bool _rayActive;
+        protected bool _rayActive;
         public bool RayActive
         {
             get { return _rayActive; }
         }
-        private FP_RayArgumentHit _currentHitItem;
+        protected FP_RayArgumentHit _currentHitItem;
         public FP_RayArgumentHit ReturnCurrentHitItem
         {
             get
@@ -49,9 +52,9 @@ namespace FuzzPhyte.Ray
             _raySetup = rayInformation;
         }
         
-        event EventHandler<FP_RayArgumentHit> PreRayFire;
-        event EventHandler<FP_RayArgumentHit> PreRayEnter;
-        event EventHandler<FP_RayArgumentHit> PreRayExit;
+        protected event EventHandler<FP_RayArgumentHit> PreRayFire;
+        protected event EventHandler<FP_RayArgumentHit> PreRayEnter;
+        protected event EventHandler<FP_RayArgumentHit> PreRayExit;
 
         /// <summary>
         /// Different event handlers tied to the overall raycast states
@@ -192,7 +195,7 @@ namespace FuzzPhyte.Ray
         /// <param name="raycastData">Delegate for the raycast information</param>
         /// <param name="hitSuccess"> bool for successful hit</param>
         /// <returns></returns>
-        private bool CastRay(EventHandler<FP_RayArgumentHit> CastOnEnterEvent, EventHandler<FP_RayArgumentHit>CastHitEvent, RayDataReturn raycastData)
+        protected bool CastRay(EventHandler<FP_RayArgumentHit> CastOnEnterEvent, EventHandler<FP_RayArgumentHit>CastHitEvent, RayDataReturn raycastData)
         {
             bool hitSuccess = false;
             //RaycastType rayType = RaycastType.Line;
@@ -264,7 +267,7 @@ namespace FuzzPhyte.Ray
         /// <param name="hitT"></param>
         /// <param name="hitPt"></param>
         /// <returns></returns>
-        private FP_RayArgumentHit ReturnArgument(Transform hitT, Vector3 hitPt,RaycastType rayType)
+        protected FP_RayArgumentHit ReturnArgument(Transform hitT, Vector3 hitPt,RaycastType rayType)
         {
             return new FP_RayArgumentHit()
             {
@@ -275,7 +278,13 @@ namespace FuzzPhyte.Ray
                 WorldOrigin = _raySetup.RayOrigin.position
             };
         }
-        private FP_RayArgumentHit ReturnArgument(RaycastHit hitInformation, RaycastType rayType)
+        /// <summary>
+        /// Returns a new FP_RayArgumentHit
+        /// </summary>
+        /// <param name="hitInformation"></param>
+        /// <param name="rayType"></param>
+        /// <returns></returns>
+        protected FP_RayArgumentHit ReturnArgument(RaycastHit hitInformation, RaycastType rayType)
         {
             return new FP_RayArgumentHit()
             {
@@ -286,7 +295,13 @@ namespace FuzzPhyte.Ray
                 WorldOrigin = _raySetup.RayOrigin.position
             };
         }
-        private FP_RayArgumentHit ReturnArgument(RaycastHit2D hitInformation, RaycastType rayType)
+        /// <summary>
+        /// Returns a new FP_RayArgumentHit
+        /// </summary>
+        /// <param name="hitInformation"></param>
+        /// <param name="rayType"></param>
+        /// <returns></returns>
+        protected FP_RayArgumentHit ReturnArgument(RaycastHit2D hitInformation, RaycastType rayType)
         {
             return new FP_RayArgumentHit()
             {
@@ -303,7 +318,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess"></param>
         /// <returns>Returns a FP_RaycastHit with a Line Type</returns>
-        private FP_RaycastHit RaycastThreeD( ref bool hitSuccess)
+        protected FP_RaycastHit RaycastThreeD( ref bool hitSuccess)
         {
             RaycastHit hit;
             hitSuccess = Physics.Raycast(_raySetup.RayOrigin.position, _raySetup.RayDirection, out hit, _raySetup.FPRayInformation.RaycastLength, _raySetup.FPRayInformation.LayerToInteract);
@@ -314,7 +329,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess"></param>
         /// <returns> Returns a FP_RaycastHit with a Line Type</returns>
-        private FP_RaycastHit RaycastTwoD(ref bool hitSuccess)
+        protected FP_RaycastHit RaycastTwoD(ref bool hitSuccess)
         {
             SO_FPRaycasterTwoD twoD = _raySetup.FPRayInformation as SO_FPRaycasterTwoD;
             RaycastHit2D hit = Physics2D.Raycast(
@@ -330,7 +345,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess"></param>
         /// <returns>Returns a FP_RaycastHit with a Box Type</returns>
-        private FP_RaycastHit RaycastBox(ref bool hitSuccess)
+        protected FP_RaycastHit RaycastBox(ref bool hitSuccess)
         { 
             SO_FPBoxcaster theboxData = (SO_FPBoxcaster)_raySetup.FPRayInformation;
             RaycastHit2D hit = Physics2D.BoxCast(
@@ -348,7 +363,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess"></param>
         /// <returns>Returns a FP_RaycastHit with a Cube Type</returns>
-        private FP_RaycastHit RaycastCube(ref bool hitSuccess)
+        protected FP_RaycastHit RaycastCube(ref bool hitSuccess)
         {
             RaycastHit hit;
             SO_FPCubecaster theBoxData = (SO_FPCubecaster)_raySetup.FPRayInformation;
@@ -367,7 +382,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess">Returns true if we hit something</param>
         /// <returns>Returns a FP_RaycastHit with a Sphere Type</returns>
-        private FP_RaycastHit RaycastSphere(ref bool hitSuccess)
+        protected FP_RaycastHit RaycastSphere(ref bool hitSuccess)
         {
             RaycastHit hit;
             SO_FPSpherecaster theSphereData = (SO_FPSpherecaster)_raySetup.FPRayInformation;
@@ -385,7 +400,7 @@ namespace FuzzPhyte.Ray
         /// </summary>
         /// <param name="hitSuccess"> returns true if we hit something</param>
         /// <returns>Returns a FP_RaycastHit with a Circle Type</returns>
-        private FP_RaycastHit RaycastCircle(ref bool hitSuccess)
+        protected FP_RaycastHit RaycastCircle(ref bool hitSuccess)
         {
             SO_FPCirclecaster theCircleData = (SO_FPCirclecaster)_raySetup.FPRayInformation;
 

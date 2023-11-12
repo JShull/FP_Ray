@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace FuzzPhyte.Ray.Examples
 {
+    /// <summary>
+    /// Example of how to utilize the IFPRaySetup Interface
+    /// There's a lot of boiler plate code for how this works and for the most part this example
+    /// can be reused and/or modified to your needs
+    /// </summary>
     public class FP_RayMono : MonoBehaviour, IFPRaySetup
     {
         #region Setup Variables
@@ -59,26 +64,35 @@ namespace FuzzPhyte.Ray.Examples
         #region Callback Functions for Raycast Delegates
         public void OnRayEnter(object sender, FP_RayArgumentHit arg)
         {
-            Debug.LogWarning($"RAY Enter: {arg.HitObject.name}");
+            if (arg.HitObject != null)
+            {
+                Debug.LogWarning($"RAY Enter: {arg.HitObject.name}");
+            }
+            
             _rayHit = arg;
         }
         public void OnRayStay(object sender, FP_RayArgumentHit arg)
         {
-            Debug.LogWarning($"RAY Stay: {arg.HitObject.name}");
+            if (arg.HitObject != null)
+            {
+                Debug.LogWarning($"RAY Stay: {arg.HitObject.name}");
+            }
+            
             _rayHit = arg;
         }
         public void OnRayExit(object sender, FP_RayArgumentHit arg)
         {
-            Debug.LogWarning($"RAY Exit: {arg.HitObject.name}");
+            if (arg.HitObject != null)
+            {
+                Debug.LogWarning($"RAY Exit: {arg.HitObject.name}");
+            }
+            
             _rayHit = arg;
         }
         #endregion
-        
-        public void Start()
-        {
-            
-        }
-
+        /// <summary>
+        /// Using FixedUpdate to send the Physics Raycast
+        /// </summary>
         public void FixedUpdate()
         {
             _raycaster.FireRaycast();

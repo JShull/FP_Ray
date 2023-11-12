@@ -7,14 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2023-11-12
+
+### 0.2.2 Fixed
+
+- [@JShull](https://github.com/jshull)
+  - FP_Raycaster.cs
+    - Now can more easily derived with the use of protected instead of private
+  - Documentation~ folder
+    - Relocated built in 2D documentation to the default Unity Documentation~ folder
+
+### 0.2.2 Added
+
+- [@JShull](https://github.com/jshull)
+  - Reference to FP_Utility.git
+  - Modified ASMDEF to include cleaning up references
+  - Added in new 2D Examples built by [@BlimpCat](https://github.com/BlimpCat) which be found under the Samples~/SamplesURP/Additional2D
+    - Various Scenes added as breakdowns of each added raycast system
+    - See Additional2D Folder in the SamplesURP folder
+
+### 0.2.2 Removed
+
+- [@JShull](https://github.com/jshull)
+  - Removed Utility references to Drawing Spheres/Circles/Cubes
+
 ## [0.2.1] - 2023-09-06
 
 ### 0.2.1 Fixed
 
--[@JShull](https://github.com/jshull)
--FP_Raycaster.cs hot fix
-  - Some scenarios would result in our RayOrigin transform being removed/destroyed prior to the raycaster being deactivated and in those cases the raycaster wasn't catching that issue
-  - Now running two separate invoked events, one containing the origin information the other not.
+- [@JShull](https://github.com/jshull)
+  - FP_Raycaster.cs hot fix
+    - Some scenarios would result in our RayOrigin transform being removed/destroyed prior to the raycaster being deactivated and in those cases the raycaster wasn't catching that issue
+    - Now running two separate invoked events, one containing the origin information the other not.
 
 ## [0.2.0] - 2022-11-28
 
