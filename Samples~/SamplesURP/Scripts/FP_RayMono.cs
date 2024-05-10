@@ -27,9 +27,15 @@ namespace FuzzPhyte.Ray.Examples
             get { return RaycastOrigin; }
             set { RaycastOrigin = value; }
         }
+        //quick fix for cases in which we end up destroying endpoints
         public float3 RayDirection
         {
-            get { return Vector3.Normalize(RaycastEndDir.position - RaycastOrigin.position); }
+            get { 
+                if(RaycastEndDir==null||RaycastOrigin==null)
+                {
+                    return Vector3.zero;
+                }
+                return Vector3.Normalize(RaycastEndDir.position - RaycastOrigin.position); }
             set { RayDirection = value; }
         }
         private FP_Raycaster _raycaster;
