@@ -38,29 +38,29 @@ namespace FuzzPhyte.Ray.Examples
                 return Vector3.Normalize(RaycastEndDir.position - RaycastOrigin.position); }
             set { RayDirection = value; }
         }
-        private FP_Raycaster _raycaster;
-
-        private FP_RayArgumentHit _rayHit;
-
+        protected FP_Raycaster _raycaster;
+        
+        protected FP_RayArgumentHit _rayHit;
+        
         public FP_Raycaster Raycaster { get { return _raycaster; } set { _raycaster = value; } }
         
-        public void SetupRaycaster()
+        public virtual void SetupRaycaster()
         {
             _raycaster = new FP_Raycaster(this);
         }
         #endregion
-        private void Awake()
+        protected virtual void Awake()
         {
             SetupRaycaster();
         }
-        public void OnEnable()
+        public virtual void OnEnable()
         {
             _raycaster.OnFPRayFireHit += OnRayStay;
             _raycaster.OnFPRayEnterHit += OnRayEnter;
             _raycaster.OnFPRayExit += OnRayExit;
             _raycaster.ActivateRaycaster();
         }
-        public void OnDisable()
+        public virtual void OnDisable()
         {
             _raycaster.OnFPRayFireHit -= OnRayStay;
             _raycaster.OnFPRayEnterHit -= OnRayEnter;
@@ -68,7 +68,7 @@ namespace FuzzPhyte.Ray.Examples
             _raycaster.DeactivateRaycaster();
         }
         #region Callback Functions for Raycast Delegates
-        public void OnRayEnter(object sender, FP_RayArgumentHit arg)
+        public virtual void OnRayEnter(object sender, FP_RayArgumentHit arg)
         {
             if (arg.HitObject != null)
             {
@@ -77,7 +77,7 @@ namespace FuzzPhyte.Ray.Examples
             
             _rayHit = arg;
         }
-        public void OnRayStay(object sender, FP_RayArgumentHit arg)
+        public virtual void OnRayStay(object sender, FP_RayArgumentHit arg)
         {
             if (arg.HitObject != null)
             {
@@ -86,7 +86,7 @@ namespace FuzzPhyte.Ray.Examples
             
             _rayHit = arg;
         }
-        public void OnRayExit(object sender, FP_RayArgumentHit arg)
+        public virtual void OnRayExit(object sender, FP_RayArgumentHit arg)
         {
             if (arg.HitObject != null)
             {
@@ -99,12 +99,10 @@ namespace FuzzPhyte.Ray.Examples
         /// <summary>
         /// Using FixedUpdate to send the Physics Raycast
         /// </summary>
-        public void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             _raycaster.FireRaycast();
         }
-
-        
     }
 
 }
