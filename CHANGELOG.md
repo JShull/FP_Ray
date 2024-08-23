@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2024-08-23
+
+### 0.2.3 Edited
+
+- [@JShull](https://github.com/jshull)
+  - FP_RayMono.cs
+    - easier to derive from and/or override
+
 ## [0.2.2] - 2023-11-12
 
 ### 0.2.2 Fixed
