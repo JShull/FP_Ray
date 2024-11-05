@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace FuzzPhyte.Ray
 {
+    using FuzzPhyte.Utility;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
     //Main root Scriptable Object that all others derive off of - shouldn't create this one directly
     [Serializable]
-    public class SO_FPRaycaster : ScriptableObject
+    public class SO_FPRaycaster : FP_Data
     {
         [Tooltip("The layer we care about to return/hit on")]
         public LayerMask LayerToInteract;
