@@ -4,7 +4,7 @@ using FuzzPhyte.Ray;
 using UnityEngine;
 namespace FuzzPhyte.Ray
 {
-    [CreateAssetMenu(fileName = "BoxRaycaster", menuName = "ScriptableObjects/FuzzPhyte/Ray/Boxcaster", order = 2)]
+    [CreateAssetMenu(fileName = "BoxRaycaster", menuName = "FuzzPhyte/Ray/Boxcaster", order = 2)]
     public class SO_FPBoxcaster : SO_FPRaycaster
     {
         [Space]

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FuzzPhyte.Ray
 {
-    [CreateAssetMenu(fileName = "CubeRaycaster", menuName = "ScriptableObjects/FuzzPhyte/Ray/Cubecaster", order = 3)]
+    [CreateAssetMenu(fileName = "CubeRaycaster", menuName = "FuzzPhyte/Ray/Cubecaster", order = 3)]
     public class SO_FPCubecaster : SO_FPRaycaster
     {
         [Space]

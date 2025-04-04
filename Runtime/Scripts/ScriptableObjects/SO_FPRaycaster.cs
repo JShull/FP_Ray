@@ -2,8 +2,6 @@ namespace FuzzPhyte.Ray
 {
     using FuzzPhyte.Utility;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     //Main root Scriptable Object that all others derive off of - shouldn't create this one directly
     [Serializable]

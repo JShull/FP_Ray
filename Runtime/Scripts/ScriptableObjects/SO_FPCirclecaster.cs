@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FuzzPhyte.Ray
 {
-    [CreateAssetMenu(fileName = "CircleRaycaster", menuName = "ScriptableObjects/FuzzPhyte/Ray/Circlecaster", order = 5)]
+    [CreateAssetMenu(fileName = "CircleRaycaster", menuName = "FuzzPhyte/Ray/Circlecaster", order = 5)]
     public class SO_FPCirclecaster : SO_FPRaycaster
     {
         [Space]
