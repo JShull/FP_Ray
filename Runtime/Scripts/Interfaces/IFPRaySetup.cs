@@ -6,14 +6,10 @@ namespace FuzzPhyte.Ray
     
     public interface IFPRaySetup 
     {
-        [SerializeField]
-        SO_FPRaycaster FPRayInformation { get; set; }
-        [SerializeField]
-        Transform RayOrigin { get; }
-        [SerializeField]
-        float3 RayDirection { get; set; }
-        [SerializeField]
-        FP_Raycaster Raycaster { get; set; }
+        public SO_FPRaycaster FPRayInformation { get; set; }
+        public Transform RayOrigin { get; }
+        public float3 RayDirection { get; set; }
+        public FP_Raycaster Raycaster { get; set; }
     }
 }
 
