@@ -10,6 +10,7 @@ namespace FuzzPhyte.Ray
         public Transform RayOrigin { get; }
         public float3 RayDirection { get; set; }
         public FP_Raycaster Raycaster { get; set; }
+        public bool DrawEditorGizmos { get; }
     }
 }
 

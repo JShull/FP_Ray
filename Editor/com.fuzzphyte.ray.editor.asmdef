@@ -1,0 +1,21 @@
+{
+    "name": "com.fuzzphyte.ray.editor",
+    "rootNamespace": "FuzzPhyte.Ray.Editor",
+    "references": [
+        "com.fuzzphyte.ray",
+        "com.fuzzphyte.utility",
+        "com.fuzzphyte.utility.editor",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

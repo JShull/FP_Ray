@@ -16,6 +16,7 @@ namespace FuzzPhyte.Ray.Examples
         public SO_FPRaycaster RayData;
         public Transform RaycastOrigin;
         public Transform RaycastEndDir;
+        public bool DrawRaycaster;
         #endregion
         #region Interface Requirements
         public SO_FPRaycaster FPRayInformation
@@ -48,6 +49,7 @@ namespace FuzzPhyte.Ray.Examples
         {
             _raycaster = new FP_Raycaster(this);
         }
+        public bool DrawEditorGizmos { get { return DrawRaycaster; } }
         #endregion
         protected virtual void Awake()
         {
