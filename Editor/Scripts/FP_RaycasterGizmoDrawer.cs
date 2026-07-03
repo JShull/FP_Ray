@@ -1,20 +1,14 @@
 namespace FuzzPhyte.Ray.Editor
 {
-    using FuzzPhyte.Utility;
-    using System;
     using System.Reflection;
-    using Unity.Mathematics;
     using UnityEditor;
     using UnityEngine;
-    using UnityEngine.UIElements;
 
     public static class FP_RaycasterGizmoDrawer
     {
         // Visual defaults
-        private const float k_DefaultInfiniteVisualLength = 500f;
         private const float k_ArrowSize = 0.08f;
         private const float k_distSizeScale = 0.025f;
-        private const float k_MinDirSqr = 0.000001f;
 
         [DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
         private static void DrawRaySetupGizmos(MonoBehaviour target, GizmoType gizmoType)
@@ -78,7 +72,6 @@ namespace FuzzPhyte.Ray.Editor
             //Handles.SphereHandleCap(1, end, Quaternion.identity, 0.03f, EventType.Repaint);
             //Handles.ConeHandleCap(0, end, Quaternion.LookRotation(dir), 0.1f, EventType.Repaint);
         }
-
         private static void DrawArrow(Vector3 end, Vector3 dir, float length, Color c)
         {
             float size = Mathf.Max(0.1f, length * k_ArrowSize);
@@ -88,7 +81,6 @@ namespace FuzzPhyte.Ray.Editor
             Handles.ConeHandleCap(0, end, rot, size, EventType.Repaint);
             Handles.color = prev;
         }
-
         private static void DrawLabel(Vector3 origin, SO_FPRaycaster info, float length)
         {
             // Keep label readable even when non-selected
@@ -101,7 +93,6 @@ namespace FuzzPhyte.Ray.Editor
             string typeName = info.GetType().Name;
             Handles.Label(origin + Vector3.up * 0.05f, $"{typeName} Len: {length:0.##}", labelStyle);
         }
-
         private static void DrawCastVolumeSweep(Vector3 start, Vector3 end, Vector3 dir, SO_FPRaycaster info)
         {
             // Sphere / Circle radius checks
@@ -127,7 +118,6 @@ namespace FuzzPhyte.Ray.Editor
 
             // If no known fields found, it's a plain line caster (already drawn)
         }
-
         private static void DrawSphereSweep(Vector3 start, Vector3 end, Vector3 dir, float radius)
         {
             // Start + end spheres
@@ -144,7 +134,6 @@ namespace FuzzPhyte.Ray.Editor
             Handles.DrawLine(start + v * radius, end + v * radius);
             Handles.DrawLine(start - v * radius, end - v * radius);
         }
-
         private static void DrawCircleSweep(Vector3 start, Vector3 end, Vector3 dir, float radius, Vector3 normal)
         {
             // Start + end discs
@@ -159,7 +148,6 @@ namespace FuzzPhyte.Ray.Editor
             Handles.DrawLine(start + v * radius, end + v * radius);
             Handles.DrawLine(start - v * radius, end - v * radius);
         }
-
         private static void DrawBoxSweep(Vector3 start, Vector3 end, Quaternion rot, Vector3 halfExtents)
         {
             // Draw oriented wire boxes at start and end
@@ -173,7 +161,6 @@ namespace FuzzPhyte.Ray.Editor
             for (int i = 0; i < 8; i++)
                 Handles.DrawLine(a[i], b[i]);
         }
-
         private static void DrawWireBox(Vector3 center, Quaternion rot, Vector3 halfExtents)
         {
             Matrix4x4 prev = Handles.matrix;
@@ -181,7 +168,6 @@ namespace FuzzPhyte.Ray.Editor
             Handles.DrawWireCube(Vector3.zero, halfExtents * 2f);
             Handles.matrix = prev;
         }
-
         private static Vector3[] GetBoxCornersWorld(Vector3 center, Quaternion rot, Vector3 halfExtents)
         {
             // 8 corners in local space
@@ -204,7 +190,6 @@ namespace FuzzPhyte.Ray.Editor
 
             return world;
         }
-
         private static void BuildOrthonormalBasis(Vector3 n, out Vector3 u, out Vector3 v)
         {
             n.Normalize();
@@ -215,7 +200,6 @@ namespace FuzzPhyte.Ray.Editor
             u.Normalize();
             v = Vector3.Cross(n, u).normalized;
         }
-
         private static Vector3 Resolve2DNormal(SO_FPRaycaster info)
         {
             // AxisToConvert is documented as “0 or 1 for 2D”
@@ -237,7 +221,6 @@ namespace FuzzPhyte.Ray.Editor
             // Fallback
             return Vector3.forward;
         }
-
         private static Quaternion ResolveBoxRotation(SO_FPRaycaster info)
         {
             // Your runtime debug uses either:
@@ -251,7 +234,6 @@ namespace FuzzPhyte.Ray.Editor
 
             return Quaternion.identity;
         }
-
         private static bool TryGetFloat(object obj, string fieldName, out float value)
         {
             value = default;
@@ -263,7 +245,6 @@ namespace FuzzPhyte.Ray.Editor
             value = (float)f.GetValue(obj);
             return true;
         }
-
         private static bool TryGetVector3(object obj, string fieldName, out Vector3 value)
         {
             value = default;
